@@ -1,11 +1,81 @@
-.App {
+button {
+  border: none;
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+.modal-show {
+  background-color: #fefefe;
+  margin: 0 auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+  position: fixed;
+}
+
+/* Utility classes */
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.bold {
+  font-weight: bold;
+}
+
+.order {
+  margin: 0.1rem 0;
+  padding: 10px;
+  text-align: left;
+}
+
+.order-list {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.order-header {
+  margin: 0.5rem 0;
+  padding: 10px;
+  font-weight: bold;
+  background-color: grey;
+  border-radius: 5px;
+}
+
+.order-quantity {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.modal {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, .64);
+  /* background-color: #5c5c5c; */
+  /* opacity: 0.9; */
+  left: 0;
+  top: 0;
+  z-index: 999;
+  padding: 10% 0;
 }
+
+.modal-body {
+  margin-top: 10%;
+  background-color: #f4f5f7;
+  margin: auto;
+  height: 50%;
+  width: 30%;
+  opacity: 1;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
