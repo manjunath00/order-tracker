@@ -1,9 +1,20 @@
 import React, {useState} from "react";
+import {connect} from "react-redux";
 import Modal from "../common/Modal";
+import {editOrder} from "../../actions/ordersActions";
+import history from "../../history";
 
-const OrderEdit = ({customer_name, customer_email, product, quantity}) => {
+const OrderEdit = (props) => {
+  const {
+    id,
+    customer_name,
+    customer_email,
+    product,
+    quantity,
+  } = props.order;
   const [name, setName] = useState(customer_name);
   const [email, setEmail] = useState(customer_email);
+  const [productType, setProductType] = useState(product);
   const [newQuantity, setQuantity] = useState(quantity);
 
   const onSubmit = (e) => {
@@ -12,6 +23,15 @@ const OrderEdit = ({customer_name, customer_email, product, quantity}) => {
     setName("");
     setEmail("");
     setQuantity(0);
+    const order = {
+      id: id,
+      customer_name: name,
+      customer_email: email,
+      product: productType,
+      quantity: newQuantity,
+    };
+    props.editOrder(order);
+    history.push("/"); 
   };
 
   return (
@@ -39,7 +59,10 @@ const OrderEdit = ({customer_name, customer_email, product, quantity}) => {
           </div>
           <div>
             <div>Product</div>
-            <select>
+            <select
+              value={productType}
+              onChange={(e) => setProductType(e.target.value)}
+            >
               <option value="Product 1">Product 1</option>
               <option value="Product 2">Product 2</option>
               <option value="Product 3">Product 3</option>
@@ -65,4 +88,11 @@ const OrderEdit = ({customer_name, customer_email, product, quantity}) => {
   );
 };
 
-export default OrderEdit;
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id
+  // console.log("From edit component ---------", state)
+  return { order: state.orders.filter(order => order.id === id)[0]}
+}
+
+export default connect(mapStateToProps, {editOrder})(OrderEdit);
+ 
