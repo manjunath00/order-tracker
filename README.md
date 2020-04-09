@@ -18,6 +18,9 @@ cd order-tracker
 # install and run via npm or yarn
 npm i && npm start
 ```
+
+## Link
+Try it out.Link [Here](https://laughing-franklin-0c22d9.netlify.com/)
  
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
