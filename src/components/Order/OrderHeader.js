@@ -1,15 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
-function OrderHeader({noOfOrders, currentPage, totalPages}) {
+function OrderHeader({noOfOrders}) {
   return (
     <div className="flex">
       <div>
         <div>
-          Orders(<span className="bold">{noOfOrders}</span>){" "}
-        </div>
-        <div>
-          Showing {currentPage} out of {totalPages} pages
+          Orders(<span className="bold"> {noOfOrders}</span>)
         </div>
       </div>
       <div>
@@ -19,4 +17,10 @@ function OrderHeader({noOfOrders, currentPage, totalPages}) {
   );
 }
 
-export default OrderHeader;
+const mapStateToProps = (state) => { 
+  return {
+    noOfOrders: state.orders.length
+  };
+};
+
+export default connect(mapStateToProps, null)(OrderHeader);
