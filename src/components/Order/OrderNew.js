@@ -1,19 +1,31 @@
 import React, {useState} from "react";
 import Modal from "../common/Modal";
+import {v4 as uuidv4} from "uuid";
+import {connect} from "react-redux";
+import history from "../../history";
+import {newOrder} from "../../actions/ordersActions";
 
-const OrderNew = () => {
+const OrderNew = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [quantity, setQuantity] = useState(0);
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(name, email, quantity);
+    e.preventDefault(); 
+    const order = {
+      id: uuidv4(),
+      customer_name: name,
+      customer_email: email,
+      product: "Product 1",
+      quantity: quantity,
+    };
+    props.newOrder(order);
     setName("");
     setEmail("");
     setQuantity(0);
+    history.push("/");
   };
-
+ 
   return (
     <Modal>
       <div>
@@ -65,4 +77,8 @@ const OrderNew = () => {
   );
 };
 
-export default OrderNew;
+const mapStateToProps = state => {
+  return {};
+}
+
+export default connect(mapStateToProps, {newOrder})(OrderNew);
