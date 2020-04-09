@@ -10,7 +10,6 @@ function OrdersListHeader({sortOrder}) {
     setsortDirection(!sortDirection);
   };
 
-  // <button className="headerSortUp"></button>
   return (
     <div className="row order-header">
       <div
