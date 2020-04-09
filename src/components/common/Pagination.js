@@ -1,25 +1,40 @@
 import React from "react";
+import {connect} from "react-redux";
+import {
+  nextPage,
+  prevPage,
+  setItemsPerPage,
+} from "../../actions/paginationActions";
 
 const Pagination = ({
-  ordersPerPage,
-  currentPage,
-  paginate,
-  changeOrderPerPage,
+  pages,
+  nextPage,
+  prevPage,
+  setItemsPerPage,
+  totalItems,
 }) => {
-  const itemsPerPageArray = [5,10, 25, 50, 100];
+  const itemsPerPageArray = [2, 5, 10, 25, 50, 100];
 
-  const generateItemsPerPage = (itemsPerPage) => {
-    if (itemsPerPage === ordersPerPage) {
-      return (
-        <option value={itemsPerPage} selected>
-          {itemsPerPage}
-        </option>
-      );
-    }
-    return <option value={itemsPerPage}>{itemsPerPage}</option>;
+  const totalPages = Math.ceil(totalItems / pages.itemsPerPage);
+
+  const renderOptions = (setItemsPerPage) => {
+    return (
+      <div>
+        <select
+          onChange={(e) => setItemsPerPage(e.target.value)}
+          value={pages.itemsPerPage}
+        >
+          {itemsPerPageArray.map((itemsPerPage, index) => {
+            return (
+              <option value={itemsPerPage} key={index}>
+                {itemsPerPage}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+    );
   };
-
-  const onOrderPerPageChange = (e) => changeOrderPerPage(e.target.value);
 
   return (
     <div className="flex">
@@ -28,40 +43,37 @@ const Pagination = ({
           <a
             href="!#"
             className="page-link"
-            onClick={() => paginate(currentPage - 1)}
+            onClick={() => prevPage(pages.currentPage)}
           >
             Previous
           </a>
         </li>
         <li className="page-item">
-          <a
-            href="!#"
-            className="page-link"
-            onClick={() => paginate(currentPage)}
-          >
-            {currentPage}
-          </a>
+          {pages.currentPage} of {totalPages}
         </li>
+
         <li className="page-item">
           <a
             href="!#"
             className="page-link"
-            onClick={() => paginate(currentPage + 1)}
+            onClick={() => nextPage(pages.currentPage, totalPages)}
           >
             Next
           </a>
         </li>
       </ul>
       <div className="flex">
-        <div>
-          <select onChange={onOrderPerPageChange}>
-            {itemsPerPageArray.map(generateItemsPerPage)}
-          </select>
-        </div>
+        {renderOptions(setItemsPerPage)}
         <div>Items per page</div>
       </div>
     </div>
   );
 };
 
-export default Pagination;
+const mapStateToProps = (state) => {
+  return {pages: state.pages};
+};
+
+export default connect(mapStateToProps, {nextPage, prevPage, setItemsPerPage})(
+  Pagination
+);

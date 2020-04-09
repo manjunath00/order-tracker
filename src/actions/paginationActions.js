@@ -1,8 +1,8 @@
 import {NEXT_PAGE} from "./types";
 import {PREV_PAGE} from "./types";
-import {SET_ITEMS_PER_PAGE} from "./types";
+import {SET_ITEMS_PER_PAGE} from "./types"; 
 
-export const nextPage = (value, totalPages = 11111) => {
+export const nextPage = (value, totalPages) => {
   if (value < totalPages) {
     value++;
   }
