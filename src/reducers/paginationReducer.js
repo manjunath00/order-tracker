@@ -5,22 +5,28 @@ import {SET_ITEMS_PER_PAGE} from "../actions/types";
 
 const initialState = {
   currentPage: 1,
-  itemsPerPage: 2
+  itemsPerPage: 2,
 };
 
 const returnStateObject = function (state) {
-  const stateObj = {
+  // array start index & array end index for orders slicing
+  const updatedStateObjForArrayEndIndex = {
     ...state,
     arrayEndIndex: state.itemsPerPage * state.currentPage,
   };
-  const enInd = {arrayStartIndex: stateObj.arrayEndIndex - state.itemsPerPage};
+  const arrayStartIndexObj = {
+    arrayStartIndex:
+      updatedStateObjForArrayEndIndex.arrayEndIndex - state.itemsPerPage,
+  };
 
-  const stateObjTwo = {...stateObj, ...enInd}; 
-  return stateObjTwo;
+  const updatedStateObjForArrayStartIndex = {
+    ...updatedStateObjForArrayEndIndex,
+    ...arrayStartIndexObj,
+  };
+  return updatedStateObjForArrayStartIndex;
 };
 
 const paginationReducer = (state = initialState, action) => {
-  // console.log("From pagination reducer------------", state);
   switch (action.type) {
     case NEXT_PAGE:
       return returnStateObject({...state, currentPage: action.payload});
@@ -29,9 +35,13 @@ const paginationReducer = (state = initialState, action) => {
       return returnStateObject({...state, currentPage: action.payload});
       break;
     case SET_ITEMS_PER_PAGE:
-      return returnStateObject({...state, itemsPerPage: action.payload, currentPage: 1});
+      return returnStateObject({
+        ...state,
+        itemsPerPage: action.payload,
+        currentPage: 1,
+      });
       break;
-  } 
+  }
   return returnStateObject(state);
 };
 
