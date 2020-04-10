@@ -5,12 +5,12 @@ import {deleteOrder} from "../../actions/ordersActions";
 import history from "../../history";
 
 function OrderDelete(props) {
+  const id = props.match.params.id;
   const goBack = () => {
-    history.push("/")
+    history.push("/orders")
   };
 
   const deleteOrder = () => {
-    const id = props.match.params.id;
     props.deleteOrder(id);
     goBack();
   };
@@ -18,7 +18,7 @@ function OrderDelete(props) {
   return (
     <Modal onDismiss={() => history.push("/")}>
       <div>
-        <div>Are you sure you want to delete this order ?</div>
+        <div>Are you sure you want to delete the order with id  <strong>{`${id}`}</strong></div>
         <div>
           <div>
             <button onClick={() => deleteOrder()}>Delete</button>
@@ -31,5 +31,6 @@ function OrderDelete(props) {
     </Modal>
   );
 }
+
 
 export default connect(null, {deleteOrder})(OrderDelete);
