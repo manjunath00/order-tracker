@@ -31,7 +31,7 @@ const OrderEdit = (props) => {
       quantity: newQuantity,
     };
     props.editOrder(order);
-    history.push("/"); 
+    history.push("/orders"); 
   };
 
   return (

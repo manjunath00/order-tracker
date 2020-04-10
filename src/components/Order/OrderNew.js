@@ -23,7 +23,7 @@ const OrderNew = (props) => {
     setName("");
     setEmail("");
     setQuantity(0);
-    history.push("/");
+    history.push("/orders");
   };
  
   return (
