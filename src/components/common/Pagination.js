@@ -17,6 +17,14 @@ const Pagination = ({
 
   const totalPages = Math.ceil(totalItems / pages.itemsPerPage);
 
+  const onNextPageClick = (e) => {
+    nextPage(pages.currentPage, totalPages);
+  };
+
+  const onPrevPageClick = (e) => {
+    prevPage(pages.currentPage);
+  };
+
   const renderOptions = (setItemsPerPage) => {
     return (
       <div>
@@ -40,26 +48,24 @@ const Pagination = ({
     <div className="flex">
       <ul className="pagination">
         <li className="page-item">
-          <a
-            href="!#"
+          <button
             className="page-link"
-            onClick={() => prevPage(pages.currentPage)}
+            onClick={(e) => onPrevPageClick(e)}
           >
             Previous
-          </a>
+          </button>
         </li>
         <li className="page-item">
           {pages.currentPage} of {totalPages}
         </li>
 
         <li className="page-item">
-          <a
-            href="!#"
+          <button
             className="page-link"
-            onClick={() => nextPage(pages.currentPage, totalPages)}
+            onClick={(e) => onNextPageClick(e)}
           >
             Next
-          </a>
+          </button>
         </li>
       </ul>
       <div className="flex">
