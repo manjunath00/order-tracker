@@ -31,6 +31,11 @@ button {
   font-weight: bold;
 }
 
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
 .order {
   margin: 0.1rem 0;
   padding: 10px;
@@ -53,12 +58,16 @@ button {
 .order-quantity {
   text-align: center;
 }
+.headerSortUp {
+  background: url("data:image/gif;base64, R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==")
+    no-repeat 99%;
+}
 
 .modal {
   height: 100%;
   width: 100%;
   position: fixed;
-  background-color: rgba(0, 0, 0, .64);
+  background-color: rgba(0, 0, 0, 0.64);
   /* background-color: #5c5c5c; */
   /* opacity: 0.9; */
   left: 0;
@@ -71,11 +80,10 @@ button {
   margin-top: 10%;
   background-color: #f4f5f7;
   margin: auto;
-  height: 50%;
+  /* height: 50%; */
   width: 30%;
   opacity: 1;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
