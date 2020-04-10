@@ -1,13 +1,18 @@
 import React from "react";
 import GoogleAuth from "./GoogleAuth";
+import { connect} from "react-redux";
 
-const Header = () => {
+const Header = (props) => {
     return <div className="container">
         <div className="flex">
-        <div>Orders</div>
+        <div>{props.userName ? <strong>Hi {props.userName}</strong>: "Orders"}</div>
         <div><GoogleAuth /></div>
         </div>
     </div>
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return { userName: state.auth.userName}
+}
+
+export default connect(mapStateToProps, {})(Header);
