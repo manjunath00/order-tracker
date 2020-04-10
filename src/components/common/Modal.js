@@ -5,8 +5,7 @@ import history from "../../history";
 const Modal = (props) => {
   console.log(props)
   return ReactDOM.createPortal(
-    // <div className="modal" onClick={props.onDismiss}>
-    <div className="modal" onClick={() => history.push('/')}>
+    <div className="modal" onClick={() => history.push('/orders')}>
       <div className="modal-body" onClick={(e) => e.stopPropagation() }>{props.children}</div>
     </div>,
     document.querySelector("#modal")
@@ -14,4 +13,3 @@ const Modal = (props) => {
 };
 
 export default Modal;
-// export default withRouter(Modal);
