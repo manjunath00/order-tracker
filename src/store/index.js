@@ -5,7 +5,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 const persistedStore = loadState();
 
-const store = createStore(rootReducer, persistedStore, composeWithDevTools());
+const composeEnhancers = composeWithDevTools({ trace: true});
+
+const store = createStore(rootReducer, persistedStore, composeEnhancers());
 
 store.subscribe(() => {
     const orders = store.getState().orders
