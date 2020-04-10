@@ -1,26 +1,35 @@
 import React from "react";
-import {Route, Router, Switch} from "react-router-dom";
+import {Route, Router, Switch, Redirect} from "react-router-dom";
+import {connect} from "react-redux";
 import "./App.css";
+import PrivateRoute from "./components/common/PrivateRoute";
 import Header from "./components/Header";
 import {
   OrderDelete,
   OrderEdit,
   OrderNew,
-  OrdersList    
+  OrdersList,
 } from "./components/Order/index.js";
 import history from "./history";
 
-function App() {
+function App(props) {
+  // console.log(props);
   return (
     <Router history={history}>
       <div className="mx-auto">
-        <Header />
-        <OrdersList />
+        <Route path="/">
+          <Header />
+          {props.isSignedIn ? <Redirect to="/orders" /> : ""}
+        </Route>
+        <PrivateRoute path="/orders" component={OrdersList} />
         <Switch>
-          {/* <Route exact={true} path="/orders/orders" component={OrdersList} /> */}
-          <Route exact={true} path="/orders/new" component={OrderNew} />
-          <Route exact={true} path="/orders/edit/:id" component={OrderEdit} />
-          <Route
+          <PrivateRoute exact={true} path="/orders/new" component={OrderNew} />
+          <PrivateRoute
+            exact={true}
+            path="/orders/edit/:id"
+            component={OrderEdit}
+          />
+          <PrivateRoute
             exact={true}
             path="/orders/delete/:id"
             component={OrderDelete}
@@ -31,4 +40,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {isSignedIn: state.auth.isSignedIn};
+};
+
+export default connect(mapStateToProps, {})(App);
