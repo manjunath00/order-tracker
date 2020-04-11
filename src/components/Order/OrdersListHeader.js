@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {sortOrder} from "../../actions/ordersActions";
 
@@ -33,6 +34,10 @@ function OrdersListHeader({sortOrder}) {
       <div></div>
     </div>
   );
+}
+
+OrdersListHeader.propTypes = {
+  sortOrder: PropTypes.func.isRequired
 }
 
 export default connect(null, {sortOrder})(OrdersListHeader);

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Modal from "../common/Modal";
+import PropTypes from "prop-types";
 import {v4 as uuidv4} from "uuid";
 import {connect} from "react-redux";
 import history from "../../history";
@@ -11,7 +12,7 @@ const OrderNew = (props) => {
   const [quantity, setQuantity] = useState(0);
 
   const onSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const order = {
       id: uuidv4(),
       customer_name: name,
@@ -25,7 +26,7 @@ const OrderNew = (props) => {
     setQuantity(0);
     history.push("/orders");
   };
- 
+
   return (
     <Modal>
       <div>
@@ -77,8 +78,12 @@ const OrderNew = (props) => {
   );
 };
 
-const mapStateToProps = state => {
+OrderNew.propTypes = {
+  newOrder: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
   return {};
-}
+};
 
 export default connect(mapStateToProps, {newOrder})(OrderNew);

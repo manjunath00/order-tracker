@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import PropTypes from "prop-types";
 import {
   nextPage,
   prevPage,
@@ -76,6 +77,14 @@ const Pagination = ({
   );
 };
 
+Pagination.propTypes = {
+  nextPage: PropTypes.func.isRequired,
+  prevPage: PropTypes.func.isRequired,
+  pages: PropTypes.object.isRequired,
+  totalItems: PropTypes.number.isRequired,
+  setItemsPerPage: PropTypes.func.isRequired
+
+}
 const mapStateToProps = (state) => {
   return {pages: state.pages};
 };

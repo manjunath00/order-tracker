@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 import Modal from "../common/Modal";
 import {deleteOrder} from "../../actions/ordersActions";
 import history from "../../history";
@@ -30,6 +31,10 @@ function OrderDelete(props) {
       </div>
     </Modal>
   );
+}
+
+OrderDelete.propTypes = {
+  deleteOrder: PropTypes.func.isRequired
 }
 
 

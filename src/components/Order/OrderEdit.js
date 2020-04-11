@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 import Modal from "../common/Modal";
 import {editOrder} from "../../actions/ordersActions";
 import history from "../../history";
@@ -87,6 +88,11 @@ const OrderEdit = (props) => {
     </Modal>
   );
 };
+
+OrderEdit.propTypes = {
+  editOrder: PropTypes.func.isRequired,
+  order: PropTypes.object.isRequired
+}
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id

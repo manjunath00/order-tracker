@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
 function OrderHeader({noOfOrders}) {
   return (
@@ -22,5 +23,9 @@ const mapStateToProps = (state) => {
     noOfOrders: state.orders.length
   };
 };
+
+OrderHeader.propTypes = {
+  noOfOrders: PropTypes.number.isRequired
+}
 
 export default connect(mapStateToProps, null)(OrderHeader);

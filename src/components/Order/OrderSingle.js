@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 function OrderSingle({order}) { 
   return (
@@ -20,6 +21,10 @@ function OrderSingle({order}) {
       </div>
     </div>
   );
+}
+
+OrderSingle.propTypes = {
+  order: PropTypes.object.isRequired
 }
 
 export default OrderSingle;
