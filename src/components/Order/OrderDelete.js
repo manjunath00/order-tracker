@@ -18,14 +18,14 @@ function OrderDelete(props) {
 
   return (
     <Modal onDismiss={() => history.push("/")}>
-      <div>
+      <div className="m-1">
         <div>Are you sure you want to delete the order with id  <strong>{`${id}`}</strong></div>
-        <div>
+        <div className="flex-se m-1">
           <div>
-            <button onClick={() => deleteOrder()}>Delete</button>
+            <button className="btn btn-danger"onClick={() => deleteOrder()}>Delete</button>
           </div>
           <div>
-            <button onClick={() => goBack()}>Cancel</button>
+            <button className="btn btn-info" onClick={() => goBack()}>Cancel</button>
           </div>
         </div>
       </div>
