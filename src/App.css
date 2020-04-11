@@ -1,12 +1,58 @@
-button {
+* {
   border: none;
-  /* margin: 0; */
-  /* padding: 0; */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: black;
+  border-bottom: 1px solid grey;
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+input,
+select {
+  border: 1px solid black;
+}
+
+select {
+  padding: 5px;
+}
+
+select:active {
+  padding: 5px;
+}
+
+input {
+  width: 100%;
+  max-width: 100%;
+}
+
+.m-1 {
+  margin: 2px 0px;
+  padding: 5px;
+}
+
+.header {
+  padding: 10px 0;
 }
 
 .modal-show {
   background-color: #fefefe;
-  margin: 0 auto; /* 15% from the top and centered */
+  margin: 0 auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
@@ -14,6 +60,14 @@ button {
   transform: translateX(-50%);
   top: 100px;
   position: fixed;
+}
+
+.modal-heading {
+  font-size: 18px;
+  text-align: left;
+  border-bottom: 1px solid grey;
+  padding-left: 0;
+  font-weight: bold;
 }
 
 /* Utility classes */
@@ -27,6 +81,12 @@ button {
   display: flex;
   justify-content: space-between;
 }
+
+.flex-se {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -34,12 +94,17 @@ button {
 .container {
   width: 70%;
   margin: 0 auto;
+  padding: 16px;
 }
 
 .order {
   margin: 0.1rem 0;
   padding: 10px;
   text-align: left;
+}
+
+.page-item {
+  margin: 0 10px;
 }
 
 .order-list {
@@ -58,9 +123,36 @@ button {
 .order-quantity {
   text-align: center;
 }
+
 .headerSortUp {
   background: url("data:image/gif;base64, R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==")
     no-repeat 99%;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+.btn-primary {
+  background-color: rgb(0, 136, 204);
+  border-color: #2e6da4;
+}
+
+.btn-danger {
+  background-color: red;
+}
+
+.btn-info {
+  background-color: grey;
+}
+
+.submit {
+  margin: 10px auto;
 }
 
 .modal {
@@ -68,8 +160,6 @@ button {
   width: 100%;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.64);
-  /* background-color: #5c5c5c; */
-  /* opacity: 0.9; */
   left: 0;
   top: 0;
   z-index: 999;
@@ -80,7 +170,7 @@ button {
   margin-top: 10%;
   background-color: #f4f5f7;
   margin: auto;
-  /* height: 50%; */
+  padding: 0.5rem;
   width: 30%;
   opacity: 1;
 }
