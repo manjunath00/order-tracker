@@ -9,11 +9,12 @@ import OrderHeader from "./OrderHeader";
 function OrdersList({orders, pages}) {
   const arrayStart = pages.arrayStartIndex;
   const arrayEnd = pages.arrayEndIndex;
+  const ordersSliced = orders.slice(arrayStart, arrayEnd);
   return (
     <div className="order-list">
       <OrderHeader />
       <OrdersListHeader />
-      {orders.slice(arrayStart, arrayEnd).map((item, index) => (
+      {ordersSliced.map((item, index) => (
         <OrderSingle order={item} key={index} />
       ))}
 

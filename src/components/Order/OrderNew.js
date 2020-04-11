@@ -14,6 +14,7 @@ const OrderNew = (props) => {
 
   return (
     <Modal>
+      <div className="m-1 modal-heading">New order</div>
       <OrderForm order={null} onSubmitOrder={onSubmit} />
     </Modal>
   );
