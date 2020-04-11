@@ -79,7 +79,7 @@ const OrderForm = (props) => {
           />
         </div>
         <div>
-          <input type="submit" className="btn btn-primary m-1" />
+          <input type="submit" className="btn btn-primary submit" />
         </div>
       </form>
     </div>

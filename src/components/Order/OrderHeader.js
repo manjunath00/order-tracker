@@ -18,7 +18,7 @@ function OrderHeader({noOfOrders}) {
   );
 }
 
-const mapStateToProps = (state) => { 
+const mapStateToProps = (state) => {
   return {
     noOfOrders: state.orders.length
   };

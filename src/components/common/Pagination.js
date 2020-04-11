@@ -46,11 +46,11 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex">
-      <ul className="pagination">
+    <div className="flex-se m-1">
+      <ul className="pagination flex-se">
         <li className="page-item">
           <button
-            className="page-link"
+            className="btn btn-primary"
             onClick={(e) => onPrevPageClick(e)}
           >
             Previous
@@ -62,7 +62,7 @@ const Pagination = ({
 
         <li className="page-item">
           <button
-            className="page-link"
+            className="btn btn-primary"
             onClick={(e) => onNextPageClick(e)}
           >
             Next

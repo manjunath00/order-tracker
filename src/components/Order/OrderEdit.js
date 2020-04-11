@@ -14,6 +14,7 @@ const OrderEdit = ({order, editOrder}) => {
 
   return (
     <Modal>
+      <div className="m-1 modal-heading">Edit order</div>
       <OrderForm order={order} onSubmitOrder={onSubmit} />
     </Modal>
   );
